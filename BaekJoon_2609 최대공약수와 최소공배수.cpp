@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Euclidean algorithm
 int GCD(int a, int b)
 {
     return b ? GCD(b, a % b) : a;
@@ -13,8 +14,9 @@ int main()
     int gcd;
     cin >> a >> b;
     
-    // 브루트 포스
-    // int temp = min(a, b);
+    // brute force algorithm
+    //
+	// int temp = min(a, b);
     // for (int i = temp; i > 0; i--)
     // {
     //     if (a % i == 0 && b % i == 0)
@@ -24,7 +26,8 @@ int main()
     //     }
     // }
     
-    // 유클리드 호제법
+    // Euclidean algorithm
+    //
     // while (b)
     // {
     //     int temp = a % b;
@@ -32,7 +35,7 @@ int main()
     //     b = temp;
     // }
     // gcd = a;
-    //
+    
     gcd = GCD(a, b);
     
     cout << gcd << '\n';
