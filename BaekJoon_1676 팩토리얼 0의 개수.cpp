@@ -2,30 +2,25 @@
 
 using namespace std;
 
-int main() {
-    int n, cnt = 0;
-    string num;
-    cin >> n;
-    
-	if (n == 0)
-		num = "0";
-	else
+int main()
+{
+	int n, temp = 1, cnt = 0;
+	cin >> n;
+	
+	for (int i = 2; i <= n; i++)
 	{
-		num = "1";
-		for (int i = 1; i <= n; i++)
-	    {
-	    	
+		temp *= i;
+		
+		while (temp % 10 == 0)
+		{
+			temp /= 10;
+			cnt++;
 		}
+		
+		temp %= 100000;
 	}
-    
-    while (n)
-    {
-        if (n % 10 == 0)
-			cnt++; 
-        n /= 10;
-    }
-    
-    cout << cnt;
-    
-    return 0;
+	
+	cout << cnt;
+		
+	return 0;
 }
