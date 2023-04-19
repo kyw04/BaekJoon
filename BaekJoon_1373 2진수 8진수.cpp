@@ -1,22 +1,44 @@
 #include <iostream>
 #include <cmath>
+#include <stack>
 
 using namespace std;
+
+int B3ToO1(string &bin)
+{
+    int temp = 0, size = bin.size();
+    for (int i = 0; i < 3; i++)
+    {
+        temp += (bin[size - i - 1] - '0') * pow(2, i);
+        bin.pop_back();
+    }
+
+    return temp;
+}
 
 int main()
 {
     string bin;
-    int result = 0, n;
+    stack<int> s;
     cin >> bin;
 
-  	n = bin.size() - 1;
-    for (int i = 0; i < bin.size(); i++)
+    while (bin.size() >= 3)
+        s.push(B3ToO1(bin));
+
+    if (bin.size())
     {
-        int temp = bin[i] - '0';
-        result += temp * pow(8, n--);
+        string temp = "";
+        for (int i = bin.size(); i < 3; i++)
+            temp += "0";
+
+        temp += bin;
+        s.push(B3ToO1(temp));
     }
 
-    cout << result;
+    while (!s.empty())
+    {
+        cout << s.top();
+        s.pop();
+    }
 
-    return 0;
 }
