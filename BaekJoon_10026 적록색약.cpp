@@ -59,13 +59,15 @@ int main()
 			cin >> paint[i][j];	
 	
 	cout << dfsAll() << ' ';
-	fill_n(visited, n, false);
 
 	for (int i = 0; i < n; i++)
+	{
+		fill_n(visited[i], n, false);
 		for (int j = 0; j < n; j++)
 			if (paint[i][j] == 'R')
 				paint[i][j] = 'G';
 	
+	}
 	cout << dfsAll();
 	
 	return 0;
