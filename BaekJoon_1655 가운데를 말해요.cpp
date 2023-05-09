@@ -8,8 +8,8 @@ int main()
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 
-	priority_queue<int> down;
-	priority_queue<int, vector<int>, greater<int>> up;
+	priority_queue<int> down; // 중간이랑 중간보다 낮은 값들 
+	priority_queue<int, vector<int>, greater<int>> up; // 중간보다 높은 값들 
 	int n;
 	cin >> n;
 
