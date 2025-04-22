@@ -13,41 +13,36 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        vector<int> result;
-        priority_queue<int, vector<int>, greater<int>> left;
-        priority_queue<int, vector<int>, less<int>> right;
-        int mid;
+        priority_queue<int> left;
+        priority_queue<int, vector<int>, greater<int>> right;
         int n;
         cin >> n;
-        for (int i = 0; i < n; i++)
+        cout << (n + 1) / 2 << '\n';
+        while (n--)
         {
             int input;
             cin >> input;
             
-            if (left.empty() || left.top() < input)
-            {
+            if (n % 2)
                 left.push(input);
-            }
             else
-            {
                 right.push(input);
+            
+            if (!left.empty() && left.top() > right.top())
+            {
+                int a = left.top();
+                int b = right.top();
+                
+                left.pop();
+                right.pop();
+                
+                left.push(b);
+                right.push(a);
             }
             
-            if (i % 2)
-            {
-                while (left.size() < right.size()) { left.push(right.top()); right.pop(); }
-                while (right.size() < left.size()) { right.push(left.top()); left.pop(); }
-            }
-            else
-            {
-                mid = left.size() > right.size() ? left.top() : right.top();
-                result.push_back(mid);
-            }
+            if (!(n % 2))
+                cout << right.top() << ' ';
         }
-        
-        cout << (n + 1) / 2 << '\n';
-        for (auto& r : result)
-            cout << r << ' ';
         cout << '\n';
     }
     
