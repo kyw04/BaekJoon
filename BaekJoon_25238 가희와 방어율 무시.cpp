@@ -4,10 +4,9 @@ using namespace std;
 
 int main()
 {
-	float a, b;
+	int a, b;
 	cin >> a >> b;
-	b *= 0.01;
-	cout << (a - (a * b) < 100);
+	cout << (a * (100 - b) / 100 < 100);
 
-	return 0;
+    return 0;
 }
