@@ -20,29 +20,23 @@ int main()
         int u, v;
         cin >> u >> v;
         graph[u].push_back(v);
+        inDegree[v]++;
     }
 
     for (int i = 1; i <= n; i++)
-        if (graph[i].empty())
+        if (inDegree[i] == 0)
             q.push(i);
 
-    for (int i = 1; i <= n; i++)
+    while (!q.empty())
     {
-        if (q.empty())
-            return 0;
         int x = q.front();
         q.pop();
-        result.push_back(x);
-        for (int j = 0; j < graph[x].size(); j++)
-        {
-            int y = graph[x][j];
+        cout << x << " ";
+
+        for (auto y : graph[x])
             if (--inDegree[y] == 0)
                 q.push(y);
-        }
     }
-
-    for (int i = 1; i <= n; i++)
-        cout << result[i] << " ";
 
     return 0;
 }
